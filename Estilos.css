@@ -1,859 +1,353 @@
-/* ==========================================================================
-   SAYO DISTRIBUCIONES · Hoja de estilos
-   Funciona junto con Bootstrap 5.3 (se carga antes que este archivo).
-
-   ÍNDICE
-   1. Variables (colores, tipografía, medidas)
-   2. Base y accesibilidad
-   3. Botones
-   4. Navegación y logo
-   5. Inicio (hero)
-   6. Encabezados de sección
-   7. Productos
-   8. Nosotros
-   9. Misión y visión
-   10. Ubicaciones
-   11. Contacto y formulario
-   12. Pie de página
-   13. Adaptación a pantallas pequeñas
-   14. Movimiento reducido
-   ========================================================================== */
-
-
-/* ==========================================================================
-   1. VARIABLES
-   Para cambiar la identidad de la marca, basta con editar estos valores.
-   ========================================================================== */
 :root {
-  /* Colores de marca: azul, rojo, blanco y negro */
-  --negro: #111111;           /* títulos y fondos oscuros */
-  --azul: #0b4ea2;            /* acento secundario */
-  --azul-oscuro: #083b7a;     /* hover del azul */
-  --rojo: #c8102e;            /* acento principal (logo y botones) */
-  --rojo-oscuro: #a30d25;     /* hover del rojo */
-  --rojo-claro: #ff6b7f;      /* rojo legible sobre fondos oscuros */
+  --azul: #0b3c8c;
+  --azul-medio: #1558c0;
+  --rojo: #d62828;
+  --rojo-oscuro: #b01e1e;
+  --negro: #0f1115;
+  --fondo: #f5f7fa;
+  --gris-azulado: #e4e9f2;
+  --texto: #14181f;
+  --texto-suave: #566070;
   --blanco: #ffffff;
-
-  /* Neutros (grises sin tinte para no competir con la marca) */
-  --texto: #3f3f46;
-  --texto-suave: #52525b;
-  --borde: #e4e4e7;
-  --fondo-suave: #f4f4f5;
-
-  /* Tipografía */
-  --fuente: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-
-  /* Medidas */
-  --radio-s: 10px;
-  --radio-m: 16px;
-  --radio-l: 24px;
-  --sombra-suave: 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 24px rgba(0, 0, 0, 0.07);
-  --espacio-seccion: clamp(3.5rem, 7vw, 6rem);
+  --fuente-titulo: "Bricolage Grotesque", system-ui, sans-serif;
+  --fuente-texto: "Source Sans 3", system-ui, sans-serif;
 }
 
-
-/* ==========================================================================
-   2. BASE Y ACCESIBILIDAD
-   ========================================================================== */
 html {
-  /* Evita que el menú fijo tape los títulos al navegar por los enlaces */
-  scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
-  font-family: var(--fuente);
-  font-size: 1rem;
+  font-family: var(--fuente-texto);
+  font-size: 1.05rem;
   line-height: 1.65;
   color: var(--texto);
-  background-color: var(--blanco);
-  -webkit-font-smoothing: antialiased;
-}
-
-body:focus {
-  outline: none; /* el body recibe foco por el scrollspy de Bootstrap */
+  background: var(--fondo);
 }
 
 h1, h2, h3, h4 {
-  color: var(--negro);
+  font-family: var(--fuente-titulo);
   font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
-a {
-  transition: color 0.2s ease;
-}
-
-/* Foco visible para quienes navegan con teclado */
-:focus-visible {
-  outline: 3px solid rgba(11, 78, 162, 0.55);
+a:focus-visible,
+button:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 3px solid var(--azul-medio);
   outline-offset: 2px;
 }
 
-/* Enlace "Saltar al contenido" */
-.visually-hidden-focusable:focus {
-  position: fixed;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 2000;
-  padding: 0.6rem 1.1rem;
-  background: var(--blanco);
-  color: var(--negro);
-  font-weight: 700;
-  border-radius: var(--radio-s);
-  box-shadow: var(--sombra-suave);
-}
-
-address {
-  font-style: normal;
-}
-
-
-/* ==========================================================================
-   3. BOTONES
-   ========================================================================== */
-.btn-sayo,
-.btn-outline-sayo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.4rem;
-  font-weight: 700;
-  border-radius: var(--radio-s);
-  border: 2px solid transparent;
-  transition: background-color 0.2s ease, color 0.2s ease,
-              border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-lg {
-  padding: 0.8rem 1.75rem;
-  font-size: 1.05rem;
-}
-
-/* Botón principal (rojo) */
+/* Botones */
 .btn-sayo {
-  background-color: var(--rojo);
-  border-color: var(--rojo);
+  background: var(--rojo);
+  border: 2px solid var(--rojo);
   color: var(--blanco);
-}
-
-.btn-sayo:hover,
-.btn-sayo:focus-visible {
-  background-color: var(--rojo-oscuro);
-  border-color: var(--rojo-oscuro);
-  color: var(--blanco);
-  box-shadow: 0 6px 16px rgba(200, 16, 46, 0.25);
-}
-
-.btn-sayo:active {
-  background-color: var(--rojo-oscuro);
-  border-color: var(--rojo-oscuro);
-  color: var(--blanco);
-}
-
-/* Botón secundario (contorno azul) */
-.btn-outline-sayo {
-  background-color: transparent;
-  border-color: var(--azul);
-  color: var(--azul);
-}
-
-.btn-outline-sayo:hover,
-.btn-outline-sayo:focus-visible {
-  background-color: var(--azul);
-  border-color: var(--azul);
-  color: var(--blanco);
-}
-
-
-/* ==========================================================================
-   4. NAVEGACIÓN Y LOGO
-   ========================================================================== */
-.navbar {
-  --bs-navbar-color: var(--texto);
-  --bs-navbar-hover-color: var(--negro);
-  --bs-navbar-active-color: var(--rojo);
-  padding-block: 0.75rem;
-  border-bottom: 1px solid var(--borde);
-}
-
-.navbar .nav-link {
-  position: relative;
-  padding: 0.5rem 0.9rem;
   font-weight: 600;
-  font-size: 0.95rem;
-}
-
-/* Subrayado en el enlace de la sección activa (solo en escritorio) */
-@media (min-width: 992px) {
-  .navbar .nav-link.active::after {
-    content: "";
-    position: absolute;
-    left: 0.9rem;
-    right: 0.9rem;
-    bottom: 0.1rem;
-    height: 2px;
-    background-color: var(--rojo);
-    border-radius: 2px;
-  }
-}
-
-.navbar-toggler {
-  border-color: var(--borde);
-}
-
-.navbar-toggler:focus {
-  box-shadow: 0 0 0 0.2rem rgba(11, 78, 162, 0.25);
-}
-
-/* Logo: imagen logo_sayo.jpeg (la altura fija mantiene la proporción) */
-.logo-sayo {
-  display: block;
-  flex-shrink: 0;
-  height: 48px;
-  width: auto;
-  max-width: 160px;
-  object-fit: contain;
   border-radius: 8px;
 }
 
-.nombre-empresa,
-.nombre-distribuciones {
-  display: block;
-  line-height: 1.1;
+.btn-sayo:hover,
+.btn-sayo:focus {
+  background: var(--rojo-oscuro);
+  border-color: var(--rojo-oscuro);
+  color: var(--blanco);
 }
 
-.nombre-empresa {
-  color: var(--negro);
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
-.nombre-distribuciones {
-  margin-top: 2px;
-  color: var(--texto-suave);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-}
-
-
-/* ==========================================================================
-   5. INICIO (HERO)
-   ========================================================================== */
-.hero {
-  padding-block: clamp(3.5rem, 9vw, 7rem);
-  background: linear-gradient(180deg, var(--fondo-suave) 0%, var(--blanco) 100%);
-}
-
-.etiqueta-hero {
-  display: inline-block;
-  margin-bottom: 1.5rem;
-  padding-left: 0.8rem;
-  border-left: 3px solid var(--rojo);
-  color: var(--negro);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.3;
-}
-
-.hero h1 {
-  margin-bottom: 1.25rem;
-  font-size: clamp(2.75rem, 6.5vw, 4.75rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-}
-
-/* "Sayo" en negrita y "Distribuciones" en peso ligero, en dos líneas */
-.hero h1 span {
-  display: block;
+.btn-outline-sayo {
+  background: transparent;
+  border: 2px solid var(--azul);
   color: var(--azul);
-  font-weight: 300;
+  font-weight: 600;
+  border-radius: 8px;
 }
 
-.texto-hero {
-  max-width: 34rem;
-  margin-bottom: 2rem;
+.btn-outline-sayo:hover,
+.btn-outline-sayo:focus {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+/* Header */
+.site-header {
+  background: var(--blanco);
+  border-bottom: 1px solid var(--gris-azulado);
+}
+
+.brand-logo {
+  height: 52px;
+  width: auto;
+}
+
+.site-header .nav-link {
   color: var(--texto);
-  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
 }
 
-.ubicaciones-hero {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.75rem;
+.site-header .nav-link:hover {
+  color: var(--azul-medio);
 }
 
-.ubicaciones-hero span {
+/* Hero */
+.hero {
+  padding: 5rem 0 6rem;
+  background:
+    linear-gradient(180deg, var(--fondo) 0%, var(--gris-azulado) 100%);
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: var(--azul);
+  margin-bottom: 1.25rem;
+  max-width: 18em;
+}
+
+.hero-text {
+  font-size: 1.2rem;
   color: var(--texto-suave);
-  font-size: 0.95rem;
+  max-width: 34em;
+  margin-bottom: 2rem;
+}
+
+/* Ruta */
+.route-card {
+  background: var(--azul);
+  color: var(--blanco);
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.route-label {
+  font-family: var(--fuente-titulo);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--blanco);
+}
+
+.route {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.route li {
+  position: relative;
+  padding: 0 0 1.75rem 2.25rem;
+}
+
+.route li:last-child {
+  padding-bottom: 0;
+}
+
+.route li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--rojo);
+  box-shadow: 0 0 0 3px var(--blanco);
+}
+
+.route li::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 1.35rem;
+  bottom: -0.35rem;
+  border-left: 2px dashed rgba(255, 255, 255, 0.4);
+}
+
+.route li:last-child::after {
+  display: none;
+}
+
+.route strong {
+  display: block;
+  font-family: var(--fuente-titulo);
+  font-size: 1.4rem;
   font-weight: 600;
 }
 
-.ubicaciones-hero i {
-  margin-right: 0.25rem;
-  color: var(--rojo);
+.route span {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.98rem;
 }
 
-/* Tarjeta oscura de la derecha */
-.hero-card {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(2rem, 5vw, 3.25rem) clamp(1.75rem, 4vw, 2.75rem);
-  background-color: var(--negro);
-  border-radius: var(--radio-l);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
-  color: #d4d4d8;
+/* Secciones */
+.section {
+  padding: 5.5rem 0;
 }
 
-.hero-card > *:not(.decoracion) {
-  position: relative;
-  z-index: 1;
+.section-head {
+  max-width: 36rem;
+  margin-bottom: 3rem;
 }
 
-.decoracion {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.decoracion-1 {
-  top: -80px;
-  right: -80px;
-  width: 240px;
-  height: 240px;
-  border: 40px solid rgba(255, 255, 255, 0.06);
-}
-
-.decoracion-2 {
-  bottom: -60px;
-  left: -50px;
-  width: 160px;
-  height: 160px;
-  background-color: rgba(200, 16, 46, 0.35);
-}
-
-.hero-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1.5rem;
-  background-color: var(--rojo);
-  border-radius: var(--radio-m);
-  color: var(--blanco);
-  font-size: 1.9rem;
-}
-
-.hero-card h2 {
-  margin-bottom: 0.75rem;
-  color: var(--blanco);
-  font-size: 1.75rem;
-}
-
-.hero-card p {
-  margin-bottom: 0;
-  font-size: 1.05rem;
-}
-
-.linea-roja {
-  width: 64px;
-  height: 4px;
-  margin-top: 1.75rem;
-  background-color: var(--rojo);
-  border-radius: 2px;
-}
-
-
-/* ==========================================================================
-   6. ENCABEZADOS DE SECCIÓN
-   ========================================================================== */
-.seccion-productos,
-.seccion-nosotros,
-.seccion-mision,
-.seccion-ubicaciones,
-.seccion-contacto {
-  /* !important porque Bootstrap fija py-5 con !important */
-  padding-block: var(--espacio-seccion) !important;
-}
-
-.encabezado-seccion {
-  max-width: 40rem;
-  margin-inline: auto;
-  margin-bottom: 1rem;
-}
-
-.texto-seccion {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  color: var(--rojo);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.encabezado-seccion h2,
-.titulo-nosotros,
-.titulo-contacto {
-  margin-bottom: 1rem;
-  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
-}
-
-.encabezado-seccion p {
-  margin-bottom: 0;
-  color: var(--texto-suave);
-  font-size: 1.1rem;
-}
-
-
-/* ==========================================================================
-   7. PRODUCTOS
-   ========================================================================== */
-.seccion-productos {
-  background-color: var(--blanco);
-}
-
-.producto-card {
-  position: relative;
-  border: 1px solid var(--borde);
-  border-radius: var(--radio-m);
-  background-color: var(--blanco);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.producto-card:hover {
-  border-color: #c4c4cc;
-  box-shadow: var(--sombra-suave);
-}
-
-.icono-producto {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  margin: 1.75rem 1.75rem 0;
-  background-color: rgba(200, 16, 46, 0.09);
-  border-radius: 14px;
-  color: var(--rojo);
-  font-size: 1.6rem;
-}
-
-.icono-azul {
-  background-color: rgba(11, 78, 162, 0.1);
+.section-head h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   color: var(--azul);
 }
 
-.numero-producto {
-  position: absolute;
-  top: 1.75rem;
-  right: 1.75rem;
-  color: #a1a1aa;
-  font-size: 0.85rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+.section-head p {
+  color: var(--texto-suave);
+  margin: 0.75rem 0 0;
 }
 
-.producto-card .card-body {
+/* Tarjetas */
+.product-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-azulado);
+  border-radius: 16px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  padding: 1.25rem 1.75rem 1.75rem;
 }
 
-.producto-card .card-title {
-  margin-bottom: 0.6rem;
-  font-size: 1.25rem;
-}
-
-.producto-card .card-text {
-  flex-grow: 1;
-  margin-bottom: 1.25rem;
-  color: var(--texto-suave);
-}
-
-.link-producto {
-  align-self: flex-start;
-  color: var(--negro);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.link-producto i {
-  display: inline-block;
-  margin-left: 0.25rem;
-  color: var(--rojo);
-  transition: transform 0.2s ease;
-}
-
-.link-producto:hover {
-  color: var(--rojo);
-}
-
-.link-producto:hover i {
-  transform: translateX(4px);
-}
-
-
-/* ==========================================================================
-   8. NOSOTROS
-   ========================================================================== */
-.seccion-nosotros {
-  background-color: var(--fondo-suave);
-}
-
-.texto-nosotros {
-  max-width: 38rem;
-  margin-bottom: 1rem;
-  font-size: 1.08rem;
-}
-
-.dato-nosotros {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.dato-nosotros > i {
-  margin-top: 0.15rem;
-  color: var(--rojo);
-  font-size: 1.35rem;
-}
-
-.dato-nosotros strong {
-  display: block;
-  color: var(--negro);
-  line-height: 1.3;
-}
-
-.dato-nosotros small {
-  display: block;
-  color: var(--texto-suave);
-  font-size: 0.9rem;
-}
-
-.tarjeta-nosotros {
-  padding: clamp(2rem, 4vw, 2.75rem);
-  background-color: var(--blanco);
-  border: 1px solid var(--borde);
-  border-top: 4px solid var(--rojo);
-  border-radius: var(--radio-m);
-  box-shadow: var(--sombra-suave);
-}
-
-.tarjeta-nosotros > i {
-  display: block;
-  margin-bottom: 1rem;
-  color: var(--azul);
-  font-size: 2.75rem;
-  line-height: 1;
-}
-
-.tarjeta-nosotros h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-}
-
-.tarjeta-nosotros p {
-  margin-bottom: 0;
-  color: var(--texto-suave);
-  font-size: 1.05rem;
-}
-
-
-/* ==========================================================================
-   9. MISIÓN Y VISIÓN
-   ========================================================================== */
-.seccion-mision {
-  background-color: var(--blanco);
-}
-
-.mision-card {
-  height: 100%;
-  padding: clamp(1.75rem, 4vw, 2.5rem);
-  background-color: var(--blanco);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio-m);
-}
-
-.mision-icono {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  margin-bottom: 1.25rem;
-  background-color: var(--negro);
+.product-icon {
+  width: 56px;
+  height: 56px;
   border-radius: 14px;
+  background: var(--azul);
   color: var(--blanco);
-  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
 }
 
-.mision-card h3 {
-  margin-bottom: 0.75rem;
+.product-card h3 {
   font-size: 1.4rem;
+  color: var(--azul);
+  margin-bottom: 0.6rem;
 }
 
-.mision-card p {
-  margin-bottom: 0;
+.product-card p {
   color: var(--texto-suave);
+  flex-grow: 1;
 }
 
-/* La visión va en oscuro para diferenciarla de la misión */
-.vision-card {
-  background-color: var(--negro);
-  border-color: var(--negro);
+.product-link {
+  color: var(--azul-medio);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--rojo);
+  text-decoration-thickness: 2px;
 }
 
-.vision-card h3 {
+.product-link:hover {
+  color: var(--azul);
+}
+
+/* Contacto */
+.section-dark {
+  background: var(--azul);
   color: var(--blanco);
 }
 
-.vision-card p {
-  color: #d4d4d8;
+.section-dark h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
 }
 
-.vision-card .mision-icono {
-  background-color: var(--rojo);
+.contact-text {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
 }
 
-
-/* ==========================================================================
-   10. UBICACIONES
-   ========================================================================== */
-.seccion-ubicaciones {
-  background-color: var(--fondo-suave);
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.ubicacion-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.1rem;
-  height: 100%;
-  padding: 1.75rem;
-  background-color: var(--blanco);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio-m);
-}
-
-.ubicacion-icono {
+.contact-list li {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background-color: rgba(200, 16, 46, 0.09);
-  border-radius: 50%;
-  color: var(--rojo);
-  font-size: 1.3rem;
+  gap: 0.8rem;
+  padding: 0.6rem 0;
 }
 
-.ubicacion-card h3 {
-  margin-bottom: 0.5rem;
+.contact-list i {
+  color: var(--blanco);
   font-size: 1.2rem;
 }
 
-.ubicacion-card p {
-  margin-bottom: 0.25rem;
-  color: var(--texto-suave);
-}
-
-.ubicacion-card p strong {
-  color: var(--negro);
-}
-
-
-/* ==========================================================================
-   11. CONTACTO Y FORMULARIO
-   ========================================================================== */
-.seccion-contacto {
-  background-color: var(--blanco);
-}
-
-.seccion-contacto .col-lg-5 > p {
-  max-width: 28rem;
-  margin-bottom: 1.75rem;
-  color: var(--texto-suave);
-  font-size: 1.08rem;
-}
-
-.contacto-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-.contacto-icono {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background-color: var(--azul);
-  border-radius: 12px;
-  color: var(--blanco);
-  font-size: 1.25rem;
-}
-
-.contacto-item small {
-  display: block;
-  color: var(--texto-suave);
-  font-size: 0.85rem;
-  line-height: 1.3;
-}
-
-.contacto-item strong {
-  display: block;
-  color: var(--negro);
-  line-height: 1.4;
-}
-
-.contacto-item strong a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.contacto-item strong a:hover {
-  color: var(--rojo);
-}
-
-.formulario-card {
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  background-color: var(--blanco);
-  border: 1px solid var(--borde);
-  border-radius: var(--radio-l);
-  box-shadow: var(--sombra-suave);
-}
-
-.formulario-card h3 {
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-}
-
-.form-label {
-  color: var(--negro);
-  font-size: 0.92rem;
-  font-weight: 700;
-}
-
-.form-control {
-  padding: 0.75rem 1rem;
-  border: 1px solid #d4d4d8;
-  border-radius: var(--radio-s);
+.contact-form {
+  background: var(--blanco);
   color: var(--texto);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 20px;
+  padding: 2rem;
 }
 
-.form-control::placeholder {
-  color: #71717a;
-}
-
-.form-control:focus {
-  border-color: var(--azul);
-  box-shadow: 0 0 0 0.22rem rgba(11, 78, 162, 0.18);
-}
-
-.form-text {
-  color: var(--texto-suave);
-  font-size: 0.85rem;
-}
-
-.alert-success {
-  border-radius: var(--radio-s);
+.contact-form .form-label {
   font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
 }
 
-
-/* ==========================================================================
-   12. PIE DE PÁGINA
-   ========================================================================== */
-.footer-sayo {
-  padding: clamp(3rem, 6vw, 4.5rem) 0 1.5rem;
-  background-color: var(--negro);
-  color: #d4d4d8;
+.contact-form .form-control,
+.contact-form .form-select {
+  background: var(--fondo);
+  border: 1.5px solid #c9d2e0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
 }
 
-.footer-sayo h4 {
-  margin-bottom: 1.1rem;
-  color: var(--blanco);
-  font-size: 1.05rem;
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+  border-color: var(--azul-medio);
+  box-shadow: 0 0 0 3px rgba(21, 88, 192, 0.25);
+  background: var(--blanco);
 }
 
-.footer-sayo p {
-  margin-bottom: 0.6rem;
-}
-
-.footer-sayo p > i {
-  margin-right: 0.35rem;
-  color: var(--rojo-claro);
+/* Footer */
+.site-footer {
+  background: var(--negro);
+  color: rgba(255, 255, 255, 0.78);
+  padding: 4rem 0 1.5rem;
 }
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 1.1rem;
+  height: 54px;
+  width: auto;
+  background: var(--blanco);
+  padding: 6px 10px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
-.footer-logo strong {
-  display: block;
+.site-footer h4 {
+  font-size: 1.1rem;
   color: var(--blanco);
-  font-size: 1.15rem;
-  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
-.footer-logo p {
-  margin-bottom: 0;
-  color: #a1a1aa;
-  font-size: 0.9rem;
-}
-
-/* En el pie el fondo es negro: el logo va sobre una base blanca */
-.logo-footer {
-  height: 56px;
-  max-width: 180px;
-  padding: 6px;
-  background-color: var(--blanco);
-  border-radius: 12px;
-}
-
-.footer-text {
-  max-width: 26rem;
-  color: #d4d4d8;
-}
-
-.footer-links {
-  margin: 0;
-  padding: 0;
+.site-footer ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.footer-links li {
-  margin-bottom: 0.55rem;
+.site-footer li {
+  margin-bottom: 0.5rem;
 }
 
-.footer-links a {
-  color: #d4d4d8;
+.site-footer a {
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
 }
 
-.footer-links a:hover,
-.footer-links a:focus-visible {
-  color: var(--blanco);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.footer-sayo hr {
-  margin: 2.25rem 0 1.25rem;
-  border-color: rgba(255, 255, 255, 0.18);
-  opacity: 1;
+.site-footer a:hover {
+  color: #ff6b6b;
 }
 
 .footer-bottom {
@@ -861,69 +355,38 @@ address {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.5rem;
-  color: #a1a1aa;
-  font-size: 0.88rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--rojo);
+  font-size: 0.92rem;
 }
 
 .footer-bottom p {
-  margin-bottom: 0;
+  margin: 0;
 }
 
-/* Foco visible sobre fondo oscuro */
-.footer-sayo :focus-visible {
-  outline-color: rgba(255, 255, 255, 0.8);
-}
-
-
-/* ==========================================================================
-   13. ADAPTACIÓN A PANTALLAS PEQUEÑAS
-   ========================================================================== */
-@media (max-width: 991.98px) {
-  /* Menú desplegable en celular y tableta */
-  .navbar-collapse {
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--borde);
-  }
-
-  .navbar .nav-link.active {
-    color: var(--rojo);
-  }
-
-  .navbar .btn-sayo {
-    width: 100%;
-  }
-}
-
+/* Móvil */
 @media (max-width: 575.98px) {
-  html {
-    scroll-padding-top: 4.5rem;
+  .hero {
+    padding: 3rem 0 4rem;
   }
 
-  .hero .d-flex .btn {
-    width: 100%;
+  .section {
+    padding: 3.5rem 0;
   }
 
-  .ubicacion-card {
-    padding: 1.4rem;
+  .contact-form,
+  .route-card {
+    padding: 1.5rem;
   }
 
-  .footer-bottom {
-    flex-direction: column;
+  .brand-logo {
+    height: 44px;
   }
 }
 
-
-/* ==========================================================================
-   14. MOVIMIENTO REDUCIDO
-   Respeta a quienes desactivan las animaciones en su dispositivo.
-   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  html {
+    scroll-behavior: auto;
   }
 }
