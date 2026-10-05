@@ -1,36 +1,76 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth scroll-pt-[80px]">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sayo Distribuciones | Distribución de productos de alta calidad</title>
-  <meta name="description" content="Sayo Distribuciones, trabajamos con el fin de llegar a toda  Ocaña, Norte de Santander y sus alrededores.">
+  <meta name="description" content="Sayo Distribuciones, trabajamos con el fin de llegar a toda Ocaña, Norte de Santander y sus alrededores.">
 
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/Estilos.css">
-</head>
-<body>
+  
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <header class="site-header sticky-top">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-        <a class="navbar-brand" href="#inicio">
-          <img src="sayo_img/logo_sayo.jpeg" alt="Sayo Distribuciones" class="brand-logo">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            azul: {
+              DEFAULT: '#0b3c8c',
+              medio: '#1558c0',
+            },
+            rojo: {
+              DEFAULT: '#d62828',
+              oscuro: '#b01e1e',
+            },
+            negro: '#0f1115',
+            fondo: '#f5f7fa',
+            'gris-azulado': '#e4e9f2',
+            texto: {
+              DEFAULT: '#14181f',
+              suave: '#566070',
+            }
+          },
+          fontFamily: {
+            titulo: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+            texto: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-texto text-[1.05rem] leading-[1.65] text-texto bg-fondo">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white border-b border-gris-azulado">
+    <nav class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+        <a href="#inicio" class="inline-block">
+          <img src="sayo_img/logo_sayo.jpeg" alt="Sayo Distribuciones" class="h-[52px] max-sm:h-[44px] w-auto">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
-          <span class="navbar-toggler-icon"></span>
+        
+        <!-- Botón menú móvil -->
+        <button id="menu-toggle" type="button" class="lg:hidden p-2 rounded-lg text-texto hover:bg-gris-azulado focus:outline-none focus:ring-2 focus:ring-azul-medio" aria-label="Abrir menú">
+          <i class="bi bi-list text-2xl"></i>
         </button>
-        <div class="collapse navbar-collapse" id="menu">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#cobertura">Cobertura</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-            <li class="nav-item ms-lg-2"><a class="btn btn-sayo btn-sm" href="#contacto">Hacer pedido</a></li>
+
+        <!-- Menú de navegación -->
+        <div id="menu" class="hidden lg:flex flex-col lg:flex-row items-center w-full lg:w-auto mt-4 lg:mt-0 gap-2 lg:gap-1">
+          <ul class="flex flex-col lg:flex-row items-center w-full lg:w-auto gap-1 lg:gap-2">
+            <li><a class="block px-3 py-2 text-texto font-semibold hover:text-azul-medio transition-colors" href="#inicio">Inicio</a></li>
+            <li><a class="block px-3 py-2 text-texto font-semibold hover:text-azul-medio transition-colors" href="#productos">Productos</a></li>
+            <li><a class="block px-3 py-2 text-texto font-semibold hover:text-azul-medio transition-colors" href="#cobertura">Cobertura</a></li>
+            <li><a class="block px-3 py-2 text-texto font-semibold hover:text-azul-medio transition-colors" href="#contacto">Contacto</a></li>
+            <li class="mt-2 lg:mt-0 lg:ml-2">
+              <a class="inline-block px-4 py-2 bg-rojo hover:bg-rojo-oscuro text-white font-semibold rounded-lg text-sm transition-colors" href="#contacto">Hacer pedido</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -38,34 +78,39 @@
   </header>
 
   <main>
-
-    <section class="hero" id="inicio">
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-7">
-            <h1 class="hero-title">Productos de alta calidad, entregados a tiempo en Ocaña y la región.</h1>
-            <p class="hero-text">Sayo Distribuciones es una empresa dedicada a la distribución de productos de alta calidad. Salimos desde Río de Oro, Cesar, y llegamos a tu negocio con cumplimiento y buen servicio.</p>
-            <div class="d-flex flex-wrap gap-3">
-              <a href="#contacto" class="btn btn-sayo btn-lg">Solicitar cotización</a>
-              <a href="#productos" class="btn btn-outline-sayo btn-lg">Ver productos</a>
+    <!-- Hero -->
+    <section class="py-12 md:py-20 lg:py-[5rem] bg-gradient-to-b from-fondo to-gris-azulado" id="inicio">
+      <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div class="lg:col-span-7">
+            <h1 class="font-titulo font-extrabold text-azul text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] leading-[1.15] tracking-tight mb-5 max-w-[18em]">
+              Productos de alta calidad, entregados a tiempo en Ocaña y la región.
+            </h1>
+            <p class="text-[1.2rem] text-texto-suave max-w-[34em] mb-8 leading-relaxed">
+              Sayo Distribuciones es una empresa dedicada a la distribución de productos de alta calidad. Salimos desde Río de Oro, Cesar, y llegamos a tu negocio con cumplimiento y buen servicio.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="#contacto" class="inline-flex items-center justify-center px-6 py-3 bg-rojo hover:bg-rojo-oscuro border-2 border-rojo hover:border-rojo-oscuro text-white font-semibold rounded-lg text-lg transition-colors">Solicitar cotización</a>
+              <a href="#productos" class="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-azul text-azul hover:bg-azul hover:text-white font-semibold rounded-lg text-lg transition-colors">Ver productos</a>
             </div>
           </div>
 
-          <div class="col-lg-5" id="cobertura">
-            <div class="route-card">
-              <p class="route-label">Nuestra ruta</p>
-              <ol class="route">
-                <li>
-                  <strong>Río de Oro</strong>
-                  <span>Cesar · Centro de distribución</span>
+          <!-- Tarjeta de Cobertura / Ruta -->
+          <div class="lg:col-span-5" id="cobertura">
+            <div class="bg-azul text-white rounded-[20px] p-6 sm:p-8 shadow-lg">
+              <p class="font-titulo font-semibold text-[1.1rem] text-white mb-6">Nuestra ruta</p>
+              <ol class="list-none m-0 p-0">
+                <li class="relative pl-[2.25rem] pb-7 last:pb-0 before:absolute before:left-0 before:top-[0.35rem] before:w-[14px] before:h-[14px] before:rounded-full before:bg-rojo before:ring-2 before:ring-white after:absolute after:left-[6px] after:top-[1.35rem] after:bottom-[-0.35rem] after:border-l-2 after:border-dashed after:border-white/40 last:after:hidden">
+                  <strong class="block font-titulo text-[1.4rem] font-semibold leading-snug">Río de Oro</strong>
+                  <span class="text-white/75 text-[0.98rem]">Cesar · Centro de distribución</span>
                 </li>
-                <li>
-                  <strong>Ocaña</strong>
-                  <span>Norte de Santander · Entrega directa</span>
+                <li class="relative pl-[2.25rem] pb-7 last:pb-0 before:absolute before:left-0 before:top-[0.35rem] before:w-[14px] before:h-[14px] before:rounded-full before:bg-rojo before:ring-2 before:ring-white after:absolute after:left-[6px] after:top-[1.35rem] after:bottom-[-0.35rem] after:border-l-2 after:border-dashed after:border-white/40 last:after:hidden">
+                  <strong class="block font-titulo text-[1.4rem] font-semibold leading-snug">Ocaña</strong>
+                  <span class="text-white/75 text-[0.98rem]">Norte de Santander · Entrega directa</span>
                 </li>
-                <li>
-                  <strong>Municipios cercanos</strong>
-                  <span>Cobertura en toda la zona</span>
+                <li class="relative pl-[2.25rem] pb-0 before:absolute before:left-0 before:top-[0.35rem] before:w-[14px] before:h-[14px] before:rounded-full before:bg-rojo before:ring-2 before:ring-white">
+                  <strong class="block font-titulo text-[1.4rem] font-semibold leading-snug">Municipios cercanos</strong>
+                  <span class="text-white/75 text-[0.98rem]">Cobertura en toda la zona</span>
                 </li>
               </ol>
             </div>
@@ -74,85 +119,92 @@
       </div>
     </section>
 
-    <section class="section" id="productos">
-      <div class="container">
-        <div class="section-head">
-          <h2>Lo que distribuimos</h2>
-          <p>Mercancía seleccionada para que tu negocio siempre tenga qué ofrecer.</p>
+    <!-- Productos -->
+    <section class="py-14 lg:py-[5.5rem]" id="productos">
+      <div class="container mx-auto px-4">
+        <div class="max-w-[36rem] mb-12">
+          <h2 class="font-titulo font-extrabold text-azul text-2xl sm:text-3xl lg:text-[2.6rem] leading-[1.15] tracking-tight">Lo que distribuimos</h2>
+          <p class="text-texto-suave mt-3">Mercancía seleccionada para que tu negocio siempre tenga qué ofrecer.</p>
         </div>
 
-        <div class="row g-4">
-          <div class="col-12 col-md-6 col-lg-4">
-            <article class="product-card h-100">
-              <div class="product-icon"><i class="bi bi-basket2-fill"></i></div>
-              <h3>Alimentos</h3>
-              <p>Productos de consumo diario con rotación constante para tiendas, supermercados y restaurantes.</p>
-              <a href="#contacto" class="product-link">Pedir información</a>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <article class="product-card h-100">
-              <div class="product-icon"><i class="bi bi-cup-straw"></i></div>
-              <h3>Bebidas</h3>
-              <p>Variedad de bebidas para abastecer tu punto de venta, con entregas programadas.</p>
-              <a href="#contacto" class="product-link">Pedir información</a>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4">
-            <article class="product-card h-100">
-              <div class="product-icon"><i class="bi bi-house-heart-fill"></i></div>
-              <h3>Aseo y hogar</h3>
-              <p>Artículos de limpieza y cuidado del hogar de marcas confiables, al por mayor y al detal.</p>
-              <a href="#contacto" class="product-link">Pedir información</a>
-            </article>
-          </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Alimentos -->
+          <article class="bg-white border border-gris-azulado rounded-[16px] p-8 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-[56px] h-[56px] rounded-[14px] bg-azul text-white grid place-items-center text-2xl mb-5">
+              <i class="bi bi-basket2-fill"></i>
+            </div>
+            <h3 class="font-titulo font-extrabold text-[1.4rem] text-azul mb-2">Alimentos</h3>
+            <p class="text-texto-suave flex-grow mb-4">Productos de consumo diario con rotación constante para tiendas, supermercados y restaurantes.</p>
+            <a href="#contacto" class="text-azul-medio font-semibold underline underline-offset-4 decoration-rojo decoration-2 hover:text-azul transition-colors">Pedir información</a>
+          </article>
+
+          <!-- Bebidas -->
+          <article class="bg-white border border-gris-azulado rounded-[16px] p-8 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-[56px] h-[56px] rounded-[14px] bg-azul text-white grid place-items-center text-2xl mb-5">
+              <i class="bi bi-cup-straw"></i>
+            </div>
+            <h3 class="font-titulo font-extrabold text-[1.4rem] text-azul mb-2">Bebidas</h3>
+            <p class="text-texto-suave flex-grow mb-4">Variedad de bebidas para abastecer tu punto de venta, con entregas programadas.</p>
+            <a href="#contacto" class="text-azul-medio font-semibold underline underline-offset-4 decoration-rojo decoration-2 hover:text-azul transition-colors">Pedir información</a>
+          </article>
+
+          <!-- Aseo y hogar -->
+          <article class="bg-white border border-gris-azulado rounded-[16px] p-8 flex flex-col h-full shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-[56px] h-[56px] rounded-[14px] bg-azul text-white grid place-items-center text-2xl mb-5">
+              <i class="bi bi-house-heart-fill"></i>
+            </div>
+            <h3 class="font-titulo font-extrabold text-[1.4rem] text-azul mb-2">Aseo y hogar</h3>
+            <p class="text-texto-suave flex-grow mb-4">Artículos de limpieza y cuidado del hogar de marcas confiables, al por mayor y al detal.</p>
+            <a href="#contacto" class="text-azul-medio font-semibold underline underline-offset-4 decoration-rojo decoration-2 hover:text-azul transition-colors">Pedir información</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-dark" id="contacto">
-      <div class="container">
-        <div class="row g-5 align-items-start">
-          <div class="col-lg-5">
-            <h2>Cuéntanos qué necesitas</h2>
-            <p class="contact-text">Escríbenos y te respondemos con precios y tiempos de entrega para tu zona.</p>
-            <ul class="contact-list">
-              <li><i class="bi bi-geo-alt-fill"></i> Río de Oro, Cesar</li>
-              <li><i class="bi bi-truck"></i> Entregas en Ocaña y alrededores</li>
-              <li><i class="bi bi-telephone-fill"></i> +57 310 877 8611</li>
-              <li><i class="bi bi-envelope-fill"></i> correo @sayodistribuciones.com</li>
+    <!-- Contacto -->
+    <section class="py-14 lg:py-[5.5rem] bg-azul text-white" id="contacto">
+      <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div class="lg:col-span-5">
+            <h2 class="font-titulo font-extrabold text-2xl sm:text-3xl lg:text-[2.6rem] leading-[1.15] mb-4">Cuéntanos qué necesitas</h2>
+            <p class="text-white/80 mb-8">Escríbenos y te respondemos con precios y tiempos de entrega para tu zona.</p>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 py-1"><i class="bi bi-geo-alt-fill text-xl"></i> Río de Oro, Cesar</li>
+              <li class="flex items-center gap-3 py-1"><i class="bi bi-truck text-xl"></i> Entregas en Ocaña y alrededores</li>
+              <li class="flex items-center gap-3 py-1"><i class="bi bi-telephone-fill text-xl"></i> +57 310 877 8611</li>
+              <li class="flex items-center gap-3 py-1"><i class="bi bi-envelope-fill text-xl"></i> correo@sayodistribuciones.com</li>
             </ul>
           </div>
 
-          <div class="col-lg-7">
-            <form class="contact-form" action="#" method="post">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="nombre" class="form-label">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" class="form-control" required>
+          <div class="lg:col-span-7">
+            <form action="#" method="post" class="bg-white text-texto rounded-[20px] p-6 sm:p-8 shadow-xl">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="nombre" class="block font-semibold text-[0.95rem] mb-1.5">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" class="w-full bg-fondo border-[1.5px] border-[#c9d2e0] rounded-[10px] px-4 py-3 focus:outline-none focus:border-azul-medio focus:ring-2 focus:ring-azul-medio/25 focus:bg-white transition-all" required>
                 </div>
-                <div class="col-md-6">
-                  <label for="telefono" class="form-label">Teléfono</label>
-                  <input type="tel" id="telefono" name="telefono" class="form-control" required>
+                <div>
+                  <label for="telefono" class="block font-semibold text-[0.95rem] mb-1.5">Teléfono</label>
+                  <input type="tel" id="telefono" name="telefono" class="w-full bg-fondo border-[1.5px] border-[#c9d2e0] rounded-[10px] px-4 py-3 focus:outline-none focus:border-azul-medio focus:ring-2 focus:ring-azul-medio/25 focus:bg-white transition-all" required>
                 </div>
-                <div class="col-md-6">
-                  <label for="correo" class="form-label">Correo electrónico</label>
-                  <input type="email" id="correo" name="correo" class="form-control">
+                <div>
+                  <label for="correo" class="block font-semibold text-[0.95rem] mb-1.5">Correo electrónico</label>
+                  <input type="email" id="correo" name="correo" class="w-full bg-fondo border-[1.5px] border-[#c9d2e0] rounded-[10px] px-4 py-3 focus:outline-none focus:border-azul-medio focus:ring-2 focus:ring-azul-medio/25 focus:bg-white transition-all">
                 </div>
-                <div class="col-md-6">
-                  <label for="municipio" class="form-label">Municipio</label>
-                  <select id="municipio" name="municipio" class="form-select">
+                <div>
+                  <label for="municipio" class="block font-semibold text-[0.95rem] mb-1.5">Municipio</label>
+                  <select id="municipio" name="municipio" class="w-full bg-fondo border-[1.5px] border-[#c9d2e0] rounded-[10px] px-4 py-3 focus:outline-none focus:border-azul-medio focus:ring-2 focus:ring-azul-medio/25 focus:bg-white transition-all">
                     <option>Ocaña</option>
                     <option>Río de Oro</option>
                     <option>Otro municipio cercano</option>
                   </select>
                 </div>
-                <div class="col-12">
-                  <label for="mensaje" class="form-label">Mensaje</label>
-                  <textarea id="mensaje" name="mensaje" rows="4" class="form-control" required></textarea>
+                <div class="md:col-span-2">
+                  <label for="mensaje" class="block font-semibold text-[0.95rem] mb-1.5">Mensaje</label>
+                  <textarea id="mensaje" name="mensaje" rows="4" class="w-full bg-fondo border-[1.5px] border-[#c9d2e0] rounded-[10px] px-4 py-3 focus:outline-none focus:border-azul-medio focus:ring-2 focus:ring-azul-medio/25 focus:bg-white transition-all" required></textarea>
                 </div>
-                <div class="col-12">
-                  <button type="submit" class="btn btn-sayo btn-lg w-100">Enviar mensaje</button>
+                <div class="md:col-span-2">
+                  <button type="submit" class="w-full py-3.5 px-6 bg-rojo hover:bg-rojo-oscuro text-white font-semibold rounded-[10px] text-lg transition-colors shadow-md">Enviar mensaje</button>
                 </div>
               </div>
             </form>
@@ -160,41 +212,48 @@
         </div>
       </div>
     </section>
-
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-5">
-          <img src="sayo_img/logo.png" alt="Sayo Distribuciones" class="footer-logo">
+  <!-- Footer -->
+  <footer class="bg-negro text-white/80 pt-16 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="md:col-span-5">
+          <img src="sayo_img/logo.png" alt="Sayo Distribuciones" class="h-[54px] w-auto bg-white px-2.5 py-1.5 rounded-[10px] mb-4">
           <p>Distribución de productos de alta calidad desde Río de Oro, Cesar, para Ocaña y sus alrededores.</p>
         </div>
-        <div class="col-6 col-md-3">
-          <h4>Enlaces</h4>
-          <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#productos">Productos</a></li>
-            <li><a href="#cobertura">Cobertura</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+        <div class="col-span-6 md:col-span-3">
+          <h4 class="font-titulo font-extrabold text-[1.1rem] text-white mb-4">Enlaces</h4>
+          <ul class="space-y-2">
+            <li><a href="#inicio" class="hover:text-[#ff6b6b] transition-colors">Inicio</a></li>
+            <li><a href="#productos" class="hover:text-[#ff6b6b] transition-colors">Productos</a></li>
+            <li><a href="#cobertura" class="hover:text-[#ff6b6b] transition-colors">Cobertura</a></li>
+            <li><a href="#contacto" class="hover:text-[#ff6b6b] transition-colors">Contacto</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md-4">
-          <h4>Síguenos</h4>
-          <ul>
-            <li><a href="#"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
-            <li><a href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
-            <li><a href="#"><i class="bi bi-instagram"></i> Instagram</a></li>
+        <div class="col-span-6 md:col-span-4">
+          <h4 class="font-titulo font-extrabold text-[1.1rem] text-white mb-4">Síguenos</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="inline-flex items-center gap-2 hover:text-[#ff6b6b] transition-colors"><i class="bi bi-whatsapp"></i> WhatsApp</a></li>
+            <li><a href="#" class="inline-flex items-center gap-2 hover:text-[#ff6b6b] transition-colors"><i class="bi bi-facebook"></i> Facebook</a></li>
+            <li><a href="#" class="inline-flex items-center gap-2 hover:text-[#ff6b6b] transition-colors"><i class="bi bi-instagram"></i> Instagram</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
+      
+      <div class="flex flex-wrap justify-between items-center gap-2 mt-12 pt-6 border-t-2 border-rojo text-[0.92rem]">
         <p>© 2026 Sayo Distribuciones. Todos los derechos reservados.</p>
-        <p>Diseño y desarrollo: Andrea del pilar Ruedas </p>
+        <p>Diseño y desarrollo: Andrea del pilar Ruedas</p>
       </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script para el menú hamburguesa en móviles -->
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
